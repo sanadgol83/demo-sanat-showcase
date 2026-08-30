@@ -18,8 +18,13 @@ export function SiteHeader() {
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
     };
   }, [menuOpen]);
 
@@ -85,51 +90,63 @@ export function SiteHeader() {
         </div>
       </div>
 
-      {menuOpen ? (
-        <div className="fixed inset-0 z-60 lg:hidden">
-          <button
-            aria-label="بستن منو"
-            className="absolute inset-0 bg-charcoal/60"
-            onClick={() => setMenuOpen(false)}
-          />
-          <div className="absolute inset-y-0 right-0 flex w-72 max-w-[85vw] flex-col bg-surface p-6 shadow-lift">
-            <div className="flex items-center justify-between">
-              <span className="text-base font-bold text-foreground">دمو صنعت</span>
-              <button aria-label="بستن" onClick={() => setMenuOpen(false)}>
-                <X className="h-5 w-5 text-muted-foreground" />
-              </button>
-            </div>
-            <span className="gold-rule my-6" aria-hidden="true" />
-            <nav className="flex flex-col">
-              {nav.map((item) =>
-                item.to ? (
-                  <Link
-                    key={item.label}
-                    to={item.to}
-                    onClick={() => setMenuOpen(false)}
-                    className="border-b border-border py-4 text-sm text-foreground"
-                    activeProps={{ className: "text-gold" }}
-                    activeOptions={{ exact: item.to === "/" }}
-                  >
-                    {item.label}
-                  </Link>
-                ) : (
-                  <button
-                    key={item.label}
-                    onClick={() => {
-                      setMenuOpen(false);
-                      open();
-                    }}
-                    className="border-b border-border py-4 text-right text-sm text-muted-foreground"
-                  >
-                    {item.label}
-                  </button>
-                ),
-              )}
-            </nav>
+      {/* Mobile drawer: physically anchored to the LEFT edge, content stays RTL */}
+      <div
+        className={`fixed inset-0 z-[100] lg:hidden ${menuOpen ? "" : "pointer-events-none"}`}
+        aria-hidden={!menuOpen}
+      >
+        <button
+          aria-label="بستن منو"
+          tabIndex={menuOpen ? 0 : -1}
+          className={`absolute inset-0 bg-charcoal/60 transition-opacity duration-300 ${
+            menuOpen ? "opacity-100" : "opacity-0"
+          }`}
+          onClick={() => setMenuOpen(false)}
+        />
+        <div
+          className={`absolute inset-y-0 left-0 right-auto flex w-[80vw] max-w-[420px] flex-col bg-surface p-6 shadow-lift transition-transform duration-300 ease-out sm:w-[380px] ${
+            menuOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
+        >
+          <div className="flex items-center justify-between">
+            <span className="text-base font-bold text-foreground">دمو صنعت</span>
+            <button aria-label="بستن" onClick={() => setMenuOpen(false)}>
+              <X className="h-5 w-5 text-muted-foreground" />
+            </button>
           </div>
+          <span className="gold-rule my-6" aria-hidden="true" />
+          <nav className="flex flex-col text-right">
+            {nav.map((item) =>
+              item.to ? (
+                <Link
+                  key={item.label}
+                  to={item.to}
+                  tabIndex={menuOpen ? 0 : -1}
+                  onClick={() => setMenuOpen(false)}
+                  className="border-b border-border py-4 text-right text-sm text-foreground"
+                  activeProps={{ className: "text-gold" }}
+                  activeOptions={{ exact: item.to === "/" }}
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <button
+                  key={item.label}
+                  tabIndex={menuOpen ? 0 : -1}
+                  onClick={() => {
+                    setMenuOpen(false);
+                    open();
+                  }}
+                  className="border-b border-border py-4 text-right text-sm text-muted-foreground"
+                >
+                  {item.label}
+                </button>
+              ),
+            )}
+          </nav>
         </div>
-      ) : null}
+      </div>
+
     </header>
   );
 }
