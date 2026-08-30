@@ -5,7 +5,7 @@ import { useDemoModal } from "./demo-modal";
 
 const nav = [
   { label: "صفحه اصلی", to: "/" },
-  { label: "درباره ما", to: null },
+  { label: "درباره ما", to: "/about" },
   { label: "محصولات", to: "/products" },
   { label: "صنایع", to: null },
   { label: "ماشین آلات", to: null },
