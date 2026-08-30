@@ -18,8 +18,13 @@ export function SiteHeader() {
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
     };
   }, [menuOpen]);
 
@@ -27,6 +32,7 @@ export function SiteHeader() {
     "relative py-2 text-sm text-muted-foreground transition-colors hover:text-foreground";
 
   return (
+    <>
     <header className="sticky top-0 z-50 border-b border-border bg-surface/85 backdrop-blur-md">
       <div className="container-x flex h-18 items-center justify-between gap-4">
         <Link to="/" className="flex min-w-0 shrink-0 items-center gap-3">
@@ -76,60 +82,75 @@ export function SiteHeader() {
             <Globe className="h-5 w-5" />
           </button>
           <button
-            aria-label="منو"
-            onClick={() => setMenuOpen(true)}
+            aria-label={menuOpen ? "بستن منو" : "منو"}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((v) => !v)}
             className="grid h-10 w-10 place-items-center text-foreground lg:hidden"
           >
-            <Menu className="h-6 w-6" />
+            {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
+
         </div>
       </div>
 
-      {menuOpen ? (
-        <div className="fixed inset-0 z-60 lg:hidden">
-          <button
-            aria-label="بستن منو"
-            className="absolute inset-0 bg-charcoal/60"
-            onClick={() => setMenuOpen(false)}
-          />
-          <div className="absolute inset-y-0 right-0 flex w-72 max-w-[85vw] flex-col bg-surface p-6 shadow-lift">
-            <div className="flex items-center justify-between">
-              <span className="text-base font-bold text-foreground">دمو صنعت</span>
-              <button aria-label="بستن" onClick={() => setMenuOpen(false)}>
-                <X className="h-5 w-5 text-muted-foreground" />
-              </button>
-            </div>
-            <span className="gold-rule my-6" aria-hidden="true" />
-            <nav className="flex flex-col">
-              {nav.map((item) =>
-                item.to ? (
-                  <Link
-                    key={item.label}
-                    to={item.to}
-                    onClick={() => setMenuOpen(false)}
-                    className="border-b border-border py-4 text-sm text-foreground"
-                    activeProps={{ className: "text-gold" }}
-                    activeOptions={{ exact: item.to === "/" }}
-                  >
-                    {item.label}
-                  </Link>
-                ) : (
-                  <button
-                    key={item.label}
-                    onClick={() => {
-                      setMenuOpen(false);
-                      open();
-                    }}
-                    className="border-b border-border py-4 text-right text-sm text-muted-foreground"
-                  >
-                    {item.label}
-                  </button>
-                ),
-              )}
-            </nav>
-          </div>
-        </div>
-      ) : null}
     </header>
+      {/* Mobile drawer: physically anchored to the LEFT edge, content stays RTL */}
+    <div
+      className={`fixed inset-0 z-[100] lg:hidden ${menuOpen ? "" : "pointer-events-none"}`}
+      aria-hidden={!menuOpen}
+    >
+      <button
+        aria-label="بستن منو"
+        tabIndex={menuOpen ? 0 : -1}
+        className={`absolute inset-0 bg-charcoal/60 transition-opacity duration-300 ${
+          menuOpen ? "opacity-100" : "opacity-0"
+        }`}
+        onClick={() => setMenuOpen(false)}
+      />
+      <div
+        className={`absolute inset-y-0 left-0 right-auto flex w-[80vw] max-w-[420px] flex-col bg-surface p-6 shadow-lift transition-transform duration-300 ease-out sm:w-[380px] ${
+          menuOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <div className="flex items-center justify-between">
+          <span className="text-base font-bold text-foreground">دمو صنعت</span>
+          <button aria-label="بستن" onClick={() => setMenuOpen(false)}>
+            <X className="h-5 w-5 text-muted-foreground" />
+          </button>
+        </div>
+        <span className="gold-rule my-6" aria-hidden="true" />
+        <nav className="flex flex-col text-right">
+          {nav.map((item) =>
+            item.to ? (
+              <Link
+                key={item.label}
+                to={item.to}
+                tabIndex={menuOpen ? 0 : -1}
+                onClick={() => setMenuOpen(false)}
+                className="border-b border-border py-4 text-right text-sm text-foreground"
+                activeProps={{ className: "text-gold" }}
+                activeOptions={{ exact: item.to === "/" }}
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <button
+                key={item.label}
+                tabIndex={menuOpen ? 0 : -1}
+                onClick={() => {
+                  setMenuOpen(false);
+                  open();
+                }}
+                className="border-b border-border py-4 text-right text-sm text-muted-foreground"
+              >
+                {item.label}
+              </button>
+            ),
+          )}
+        </nav>
+      </div>
+    </div>
+
+    </>
   );
 }

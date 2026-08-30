@@ -66,39 +66,48 @@ function Home() {
           className="grid-dots pointer-events-none absolute right-0 bottom-8 h-32 w-40 opacity-40"
           aria-hidden="true"
         />
-        <div className="container-x grid items-center gap-12 py-16 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:py-24">
+        <div className="container-x grid items-center gap-8 py-10 sm:py-14 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-12 lg:py-24">
           <div className="reveal">
             <span className="text-xs font-medium tracking-[0.35em] text-gold">
               بیش از ۴۰ سال تجربه
             </span>
-            <h1 className="mt-5 text-3xl leading-[1.5] font-extrabold text-foreground sm:text-4xl md:text-5xl md:leading-[1.4]">
+            <h1 className="mt-4 text-[1.75rem] leading-[1.45] font-extrabold text-foreground sm:text-4xl md:text-5xl md:leading-[1.4] lg:mt-5">
               مهندسی برتر در
               <br />
               <span className="text-gold">صنعت بسته‌بندی</span>
             </h1>
-            <span className="gold-rule mt-6" aria-hidden="true" />
-            <p className="mt-6 max-w-lg text-sm leading-9 text-muted-foreground sm:text-base">
+            <span className="gold-rule mt-5 lg:mt-6" aria-hidden="true" />
+            <p className="mt-4 max-w-lg text-sm leading-8 text-muted-foreground sm:text-base sm:leading-9 lg:mt-6">
               دمو صنعت با تمرکز بر طراحی و تولید ماشین‌آلات بسته‌بندی، راهکارهای مهندسی‌شده‌ای
               برای خطوط تولید صنایع غذایی و دارویی ارائه می‌دهد.
             </p>
-            <div className="mt-9 flex flex-wrap gap-4">
+            <div className="mt-6 flex flex-wrap gap-3 sm:gap-4 lg:mt-9">
               <Link
                 to="/products"
-                className="inline-flex h-12 items-center justify-center bg-gold px-8 text-sm font-semibold text-charcoal transition-colors hover:bg-gold-soft"
+                className="inline-flex h-12 flex-1 items-center justify-center bg-gold px-6 text-sm font-semibold text-charcoal transition-colors hover:bg-gold-soft sm:flex-none sm:px-8"
               >
                 مشاهده محصولات
               </Link>
               <Link
                 to="/contact"
-                className="inline-flex h-12 items-center justify-center border border-charcoal px-8 text-sm font-semibold text-foreground transition-colors hover:bg-charcoal hover:text-primary-foreground"
+                className="inline-flex h-12 flex-1 items-center justify-center border border-charcoal px-6 text-sm font-semibold text-foreground transition-colors hover:bg-charcoal hover:text-primary-foreground sm:flex-none sm:px-8"
               >
                 تماس با ما
               </Link>
             </div>
           </div>
-          <div className="relative">
+          <div className="relative mx-auto w-full max-w-[520px] lg:max-w-none">
             <span
               className="absolute -top-5 -right-5 hidden h-32 w-32 border-t border-r border-gold/60 lg:block"
+              aria-hidden="true"
+            />
+            {/* Mobile/tablet: machine "emerges" from a soft panel with subtle gold detail */}
+            <span
+              className="pointer-events-none absolute inset-x-6 top-6 bottom-0 bg-muted/50 lg:hidden"
+              aria-hidden="true"
+            />
+            <span
+              className="pointer-events-none absolute top-2 right-2 h-14 w-14 border-t-2 border-r-2 border-gold/70 lg:hidden"
               aria-hidden="true"
             />
             <img
@@ -106,10 +115,11 @@ function Home() {
               alt="دستگاه بسته‌بندی صنعتی دمو صنعت"
               width={1400}
               height={1100}
-              className="relative w-full object-cover"
+              className="relative mx-auto h-auto max-h-[46vh] w-full object-contain drop-shadow-[0_28px_40px_rgba(16,20,28,0.18)] lg:max-h-none lg:object-cover lg:drop-shadow-none"
             />
           </div>
         </div>
+
       </section>
 
       {/* FEATURED PRODUCTS */}
