@@ -102,23 +102,23 @@ export function SiteHeader() {
       <button
         aria-label="بستن منو"
         tabIndex={menuOpen ? 0 : -1}
-        className={`absolute inset-0 bg-charcoal/60 transition-opacity duration-300 ${
+        className={`absolute inset-0 bg-black/45 transition-opacity duration-300 ${
           menuOpen ? "opacity-100" : "opacity-0"
         }`}
         onClick={() => setMenuOpen(false)}
       />
       <div
-        className={`absolute inset-y-0 left-0 right-auto flex w-[80vw] max-w-[420px] flex-col bg-surface p-6 shadow-lift transition-transform duration-300 ease-out sm:w-[380px] ${
+        className={`drawer-glass absolute inset-y-0 left-0 right-auto flex w-[76vw] max-w-[320px] flex-col p-5 transition-transform duration-300 ease-out sm:w-[340px] sm:max-w-[360px] ${
           menuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         <div className="flex items-center justify-between">
-          <span className="text-base font-bold text-foreground">دمو صنعت</span>
+          <span className="text-base font-bold text-primary-foreground">دمو صنعت</span>
           <button aria-label="بستن" onClick={() => setMenuOpen(false)}>
-            <X className="h-5 w-5 text-muted-foreground" />
+            <X className="h-5 w-5 text-primary-foreground/70" />
           </button>
         </div>
-        <span className="gold-rule my-6" aria-hidden="true" />
+        <span className="gold-rule my-5" aria-hidden="true" />
         <nav className="flex flex-col text-right">
           {nav.map((item) =>
             item.to ? (
@@ -127,7 +127,7 @@ export function SiteHeader() {
                 to={item.to}
                 tabIndex={menuOpen ? 0 : -1}
                 onClick={() => setMenuOpen(false)}
-                className="border-b border-border py-4 text-right text-sm text-foreground"
+                className="border-b border-white/10 py-3.5 text-right text-sm text-primary-foreground/90"
                 activeProps={{ className: "text-gold" }}
                 activeOptions={{ exact: item.to === "/" }}
               >
@@ -141,7 +141,7 @@ export function SiteHeader() {
                   setMenuOpen(false);
                   open();
                 }}
-                className="border-b border-border py-4 text-right text-sm text-muted-foreground"
+                className="border-b border-white/10 py-3.5 text-right text-sm text-primary-foreground/60"
               >
                 {item.label}
               </button>

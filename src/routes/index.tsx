@@ -66,7 +66,7 @@ function Home() {
           className="grid-dots pointer-events-none absolute right-0 bottom-8 h-32 w-40 opacity-40"
           aria-hidden="true"
         />
-        <div className="container-x grid items-center gap-8 py-10 sm:py-14 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-12 lg:py-24">
+        <div className="container-x grid items-center gap-5 py-8 sm:gap-6 sm:py-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-12 lg:py-24">
           <div className="reveal">
             <span className="text-xs font-medium tracking-[0.35em] text-gold">
               بیش از ۴۰ سال تجربه
@@ -96,6 +96,7 @@ function Home() {
               </Link>
             </div>
           </div>
+          {/* Image stage: mobile/tablet showcase panel, untouched desktop composition */}
           <div className="relative mx-auto w-full max-w-[520px] lg:max-w-none">
             <span
               className="absolute -top-5 -right-5 hidden h-32 w-32 border-t border-r border-gold/60 lg:block"
@@ -103,11 +104,11 @@ function Home() {
             />
             {/* Mobile/tablet: machine "emerges" from a soft panel with subtle gold detail */}
             <span
-              className="pointer-events-none absolute inset-x-6 top-6 bottom-0 bg-muted/50 lg:hidden"
+              className="pointer-events-none absolute inset-x-4 top-4 bottom-2 bg-muted/50 lg:hidden"
               aria-hidden="true"
             />
             <span
-              className="pointer-events-none absolute top-2 right-2 h-14 w-14 border-t-2 border-r-2 border-gold/70 lg:hidden"
+              className="pointer-events-none absolute top-1 right-1 h-14 w-14 border-t-2 border-r-2 border-gold/70 lg:hidden"
               aria-hidden="true"
             />
             <img
@@ -115,7 +116,7 @@ function Home() {
               alt="دستگاه بسته‌بندی صنعتی دمو صنعت"
               width={1400}
               height={1100}
-              className="relative mx-auto h-auto max-h-[46vh] w-full object-contain drop-shadow-[0_28px_40px_rgba(16,20,28,0.18)] lg:max-h-none lg:object-cover lg:drop-shadow-none"
+              className="relative mx-auto block aspect-[7/5] sm:aspect-[16/10] h-auto w-full object-contain p-3 drop-shadow-[0_28px_40px_rgba(16,20,28,0.18)] lg:aspect-auto lg:p-0 lg:object-cover lg:drop-shadow-none"
             />
           </div>
         </div>
