@@ -63,7 +63,7 @@ function Home() {
           className="grid-dots pointer-events-none absolute right-0 bottom-8 h-32 w-40 opacity-40"
           aria-hidden="true"
         />
-        <div className="container-x grid items-center gap-5 py-8 sm:gap-6 sm:py-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-12 lg:py-24">
+        <div className="container-x grid items-center gap-5 py-8 sm:gap-6 sm:py-10 md:gap-4 md:pb-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-12 lg:py-24">
           <div className="reveal">
             <span className="text-xs font-medium tracking-[0.35em] text-gold">
               بیش از ۴۰ سال تجربه
