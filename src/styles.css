@@ -92,6 +92,18 @@
   animation: reveal-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
+/* Dark industrial "liquid glass" material for the mobile navigation drawer */
+@utility drawer-glass {
+  background:
+    linear-gradient(180deg, rgba(198, 154, 58, 0.12), transparent 38%),
+    rgba(16, 20, 28, 0.84);
+  backdrop-filter: blur(22px) saturate(130%);
+  border-right: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 24px 60px -20px rgba(0, 0, 0, 0.55);
+}
+
 @keyframes reveal-up {
   to {
     opacity: 1;
