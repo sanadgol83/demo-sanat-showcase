@@ -5,7 +5,7 @@ import { useDemoModal } from "./demo-modal";
 const quick = [
   { label: "صفحه اصلی", to: "/" },
   { label: "محصولات", to: "/products" },
-  { label: "درباره ما", to: null },
+  { label: "درباره ما", to: "/about" },
   { label: "صنایع", to: null },
   { label: "تماس با ما", to: "/contact" },
 ] as const;
