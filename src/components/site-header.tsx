@@ -81,12 +81,14 @@ export function SiteHeader() {
             <Globe className="h-5 w-5" />
           </button>
           <button
-            aria-label="منو"
-            onClick={() => setMenuOpen(true)}
+            aria-label={menuOpen ? "بستن منو" : "منو"}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((v) => !v)}
             className="grid h-10 w-10 place-items-center text-foreground lg:hidden"
           >
-            <Menu className="h-6 w-6" />
+            {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
+
         </div>
       </div>
 
