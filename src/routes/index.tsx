@@ -7,7 +7,6 @@ import { ProductCard } from "@/components/product-card";
 import { SectionHeading } from "@/components/section-heading";
 import { StatsSection } from "@/components/stats-section";
 import { CTASection } from "@/components/cta-section";
-import { useDemoModal } from "@/components/demo-modal";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -52,8 +51,6 @@ const features = [
 ];
 
 function Home() {
-  const { open } = useDemoModal();
-
   return (
     <>
       {/* HERO */}
@@ -177,12 +174,12 @@ function Home() {
                 ترکیب دانش مهندسی، تجربه صنعتی و شناخت نیازهای تولید، مسیر دمو صنعت را در ارائه
                 راهکارهای حرفه‌ای شکل می‌دهد.
               </p>
-              <button
-                onClick={open}
+              <Link
+                to="/about"
                 className="mt-8 inline-flex h-12 items-center justify-center border border-gold px-8 text-sm font-semibold text-gold transition-colors hover:bg-gold hover:text-charcoal"
               >
                 درباره ما
-              </button>
+              </Link>
             </div>
           </div>
         </div>
