@@ -97,7 +97,7 @@ function Home() {
             </div>
           </div>
           {/* Image stage: mobile/tablet showcase panel, untouched desktop composition */}
-          <div className="relative mx-auto w-full max-w-[520px] md:max-w-[640px] lg:max-w-none">
+          <div className="relative mx-auto w-full max-w-[520px] lg:max-w-none">
             <span
               className="absolute -top-5 -right-5 hidden h-32 w-32 border-t border-r border-gold/60 lg:block"
               aria-hidden="true"
@@ -116,7 +116,7 @@ function Home() {
               alt="دستگاه بسته‌بندی صنعتی دمو صنعت"
               width={1400}
               height={1100}
-              className="relative mx-auto block aspect-[7/5] h-auto w-full object-contain p-3 drop-shadow-[0_28px_40px_rgba(16,20,28,0.18)] lg:aspect-auto lg:p-0 lg:object-cover lg:drop-shadow-none"
+              className="relative mx-auto block aspect-[7/5] sm:aspect-[16/10] h-auto w-full object-contain p-3 drop-shadow-[0_28px_40px_rgba(16,20,28,0.18)] lg:aspect-auto lg:p-0 lg:object-cover lg:drop-shadow-none"
             />
           </div>
         </div>
