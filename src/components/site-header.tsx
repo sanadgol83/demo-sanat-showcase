@@ -108,7 +108,7 @@ export function SiteHeader() {
         onClick={() => setMenuOpen(false)}
       />
       <div
-        className={`drawer-glass absolute inset-y-0 left-0 right-auto flex w-[76vw] max-w-[320px] flex-col p-5 transition-transform duration-300 ease-out sm:w-[340px] sm:max-w-[360px] ${
+        className={`drawer-glass absolute inset-y-0 left-0 right-auto flex w-[40vw] min-w-[230px] max-w-[260px] flex-col p-5 transition-transform duration-300 ease-out sm:w-[40vw] sm:max-w-[320px] ${
           menuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
