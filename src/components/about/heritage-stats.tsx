@@ -26,9 +26,9 @@ export function HeritageStats() {
             <Reveal
               key={s.label}
               delay={i * 90}
-              className={`px-3 sm:px-6 ${
-                i > 0 ? "border-r border-primary-foreground/12" : ""
-              } ${i === 2 ? "lg:border-r" : ""}`}
+              className={`border-primary-foreground/12 px-3 sm:px-6 ${
+                i % 2 === 1 ? "border-r" : ""
+              } ${i > 0 ? "lg:border-r" : "lg:border-r-0"}`}
             >
               <div className="text-4xl leading-none font-extrabold text-gold sm:text-5xl md:text-6xl">
                 {s.value}
